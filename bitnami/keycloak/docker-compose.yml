@@ -13,7 +13,7 @@ services:
       - 'postgresql_data:/bitnami/postgresql'
 
   keycloak:
-    image: docker.io/bitnami/keycloak:26
+    build: 26/debian-12
     depends_on:
       - postgresql
     ports:
@@ -22,7 +22,8 @@ services:
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
       - KC_BOOTSTRAP_ADMIN_PASSWORD=change_me
       - KC_CACHE=local
-      - KC_HTTP_RELATIVE_PATH="/"
+      # - KC_HTTP_RELATIVE_PATH="/"
+    entrypoint: sleep 100000000000
 volumes:
   postgresql_data:
     driver: local
