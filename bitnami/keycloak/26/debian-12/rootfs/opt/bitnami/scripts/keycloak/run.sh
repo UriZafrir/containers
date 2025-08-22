@@ -15,8 +15,7 @@ set -o xtrace # Uncomment this line for debugging purposes
 # Load Keycloak environment variables
 . /opt/bitnami/scripts/keycloak-env.sh
 
-start_command=("${KEYCLOAK_BIN_DIR}/kc.sh" "-cf" "${KEYCLOAK_CONF_DIR}/${KEYCLOAK_CONF_FILE}")
-# Prepend extra args
+start_command=("${KEYCLOAK_BIN_DIR}/kc.sh" "-cf" "${KEYCLOAK_CONF_DIR}/${KEYCLOAK_CONF_FILE}" "--verbose")
 if [[ -n "$KEYCLOAK_EXTRA_ARGS_PREPENDED" ]]; then
     read -r -a extra_args_prepended <<<"$KEYCLOAK_EXTRA_ARGS_PREPENDED"
     start_command+=("${extra_args_prepended[@]}")
